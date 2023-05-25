@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Vehicle Management</title>
+</head>
+<body>
+    <div>
+        <a href="/read">back</a>
+    </div>
+    <main>
+        {% for x in data %}
+        <form method="POST" action="/edit/{{x.id}}">
+            {% csrf_token %}
+            <div style="text-align: center; border: solid; background-color: antiquewhite;">
+                <br><br>
+                <div class="col-md-12">
+                    <label for="no">Vehicle Number : </label>
+                    <input id="no" type="text" value="{{x.num}}" name="vehicle_number" class="form-control" placeholder="Vehicle Number">
+                   
+                </div>
+            <br>
+                <div>
+            
+                    <label for="car">Vehicle Type : </label>
+            
+                        <select id="car" name="v_type"> 
+                        {% if x.vehicletype == 1 %}
+                        <option value="1">Two Wheeler</option>
+                        {% elif x.vehicletype == 2 %}
+                        <option value="2">Three Wheeler</option>
+                        {% else %}
+                        <option value="3">Four Wheeler</option>
+                        {% endif %}
+
+                        <option value="1">Two Wheeler</option>
+                        <option value="2">Three Wheeler</option>
+                        <option value="3">Four Wheeler</option>
+                     
+                        </select>
+                </div>
+            <br>
+                <div>
+                    <div class="col-md-12">
+                        <label for="model">Vehicle Model : </label>
+                        <input type="text" value="{{x.vehiclemodel}}" name="model" id="model" placeholder="Vehicle Model">
+                            
+                      </div>
+                </div>
+                <br>
+                <div>
+                    <label for="des">Vehicle Description : </label>
+                    <textarea id="des"  name="des" rows="1" cols="50" placeholder="Vehicle Description">{{x.vehicledes}}</textarea>
+                    <br><br>
+                    <input style="background-color: aquamarine; color: brown;" type="submit" value="Submit">
+                </div>
+            
+            <br><br>
+            </div>
+        </form>
+        {% endfor %}
+    </main>
+</body>
+</html>
+

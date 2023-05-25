@@ -1,0 +1,42 @@
+<div>
+    <a href="/info">back</a>
+</div>
+<div class="md-12">
+
+    <table style="width: 100%;">
+        <tr>
+            <th style="border: solid; background-color: palevioletred; " >Vehicle Number</th>
+            <th style="border: solid;background-color: palevioletred;">Vehicle Type</th>
+            <th style="border: solid;background-color: palevioletred;">Vehicle Model</th>
+            <th style="border: solid;background-color: palevioletred;">Vehicle Describtion</th>
+            
+            <th style="border: solid;background-color: palevioletred;">Update</th>
+            <th style="border: solid;background-color: palevioletred;">Delete</th>
+        </tr>
+        {% for x in data %}
+        <tr>
+            <td  style="border: solid; text-align: center; background-color: antiquewhite;">{{x.num}}</td>
+
+            {% if x.vehicletype == 1 %}
+                <td style="border: solid; text-align: center;background-color: antiquewhite;">Two Wheeler</td>
+            {% elif x.vehicletype == 2 %}
+                <td style="border: solid; text-align: center;background-color: antiquewhite;">Three Wheeler</td>
+            {% else %}
+                <td style="border: solid;text-align: center;background-color: antiquewhite;">Four Wheeler</td>
+            {% endif %}
+
+            
+
+            <td style="border: solid; text-align: center;background-color: antiquewhite;">{{x.vehiclemodel}}</td>
+            <td style="border: solid;text-align: center;background-color: antiquewhite;">{{x.vehicledes}}</td>
+            
+
+            <td style="border: solid; background-color: aqua; text-align: center;"><a href="/edit/{{x.id}}"> <button class="" style="color: blueviolet; background-color:aqua ;">Update</button></a></td>
+            <td style="border: solid; background-color: red; text-align: center;"><a href="/delete/{{x.id}}"><button class="" style="color: black; background-color:red ;">Delete</button></a></td>
+        </tr>
+        {% endfor %}
+
+        
+    </table>
+
+</div>
